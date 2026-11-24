@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FashionHub - Online Shopping</title>
+  <style>
+    :root {
+      --pink: #ff3f6c;
+      --dark: #282c3f;
+      --light: #f5f5f6;
+      --gray: #535766;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #fff;
+      color: var(--dark);
+    }
+
+    header {
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5%;
+      background: #fff;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo {
+      color: var(--pink);
+      font-size: 28px;
+      font-weight: 800;
+    }
+
+    .logo span {
+      color: var(--dark);
+    }
+
+    nav {
+      display: flex;
+      gap: 28px;
+    }
+
+    nav a {
+      color: var(--dark);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .search-box {
+      width: 300px;
+      background: var(--light);
+      border-radius: 4px;
+      padding: 10px 14px;
+    }
+
+    .search-box input {
+      width: 100%;
+      border: none;
+      outline: none;
+      background: transparent;
+    }
+
+    .icon-btn {
+      border: none;
+      background: none;
+      color: var(--dark);
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .cart-count {
+      background: var(--pink);
+      color: #fff;
+      border-radius: 50%;
+      padding: 2px 6px;
+      font-size: 11px;
+    }
+
+    .hero {
+      min-height: 420px;
+      display: flex;
+      align-items: center;
+      padding: 60px 8%;
+      background:
+        linear-gradient(90deg, rgba(20, 20, 20, 0.75), rgba(20, 20, 20, 0.05)),
+        url("https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=1600&q=85")
+        center/cover;
+      color: #fff;
+    }
+
+    .hero-content {
+      max-width: 520px;
+    }
+
+    .hero h1 {
+      font-size: 54px;
+      margin-bottom: 18px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      margin-bottom: 28px;
+    }
+
+    .primary-btn {
+      border: none;
+      border-radius: 4px;
+      background: var(--pink);
+      color: #fff;
+      padding: 14px 28px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .section {
+      padding: 50px 5%;
+    }
+
+    .section-title {
+      margin-bottom: 28px;
+      font-size: 28px;
+      letter-spacing: 1px;
+    }
+
+    .categories,
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+    }
+
+    .category-card {
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .category-card img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      transition: 0.3s;
+    }
+
+    .category-card:hover img {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .category-card h3 {
+      margin-top: 12px;
+    }
+
+    .product-card {
+      border: 1px solid #eee;
+      transition: 0.3s;
+    }
+
+    .product-card:hover {
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+    }
+
+    .product-info {
+      padding: 14px;
+    }
+
+    .brand {
+      color: var(--gray);
+      font-size: 14px;
+    }
+
+    .product-name {
+      margin: 6px 0;
+      font-size: 15px;
+    }
+
+    .price {
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .old-price {
+      margin-left: 8px;
+      color: #94969f;
+      font-size: 13px;
+      text-decoration: line-through;
+    }
+
+    .discount {
+      margin-left: 6px;
+      color: #ff905a;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .add-cart {
+      width: 100%;
+      margin-top: 12px;
+      border: 1px solid var(--pink);
+      background: #fff;
+      color: var(--pink);
+      padding: 10px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .add-cart:hover {
+      background: var(--pink);
+      color: #fff;
+    }
+
+    footer {
+      background: #fafbfc;
+      color: var(--gray);
+      text-align: center;
+      padding: 30px;
+    }
+
+    @media (max-width: 900px) {
+      nav,
+      .search-box {
+        display: none;
+      }
+
+      .categories,
+      .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .hero h1 {
+        font-size: 40px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .header-actions {
+        gap: 8px;
+      }
+
+      .categories,
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">FASHION<span>HUB</span></div>
+
+    <nav>
+      <a href="#men">MEN</a>
+      <a href="#women">WOMEN</a>
+      <a href="#kids">KIDS</a>
+      <a href="#beauty">BEAUTY</a>
+    </nav>
+
+    <div class="header-actions">
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Search for products">
+      </div>
+      <button class="icon-btn">Profile</button>
+      <button class="icon-btn">Wishlist</button>
+      <button class="icon-btn">
+        Bag <span class="cart-count" id="cartCount">0</span>
+      </button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Find Your Perfect Look</h1>
+      <p>Discover trending fashion, premium quality and styles made for every occasion.</p>
+      <button class="primary-btn" onclick="scrollToProducts()">Shop Now</button>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">SHOP BY CATEGORY</h2>
+    <div class="categories" id="categoryGrid"></div>
+  </section>
+
+  <section class="section" id="products">
+    <h2 class="section-title">TRENDING PRODUCTS</h2>
+    <div class="product-grid" id="productGrid"></div>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 FashionHub. All rights reserved.</p>
+  </footer>
+
+  <script src="myntra.js"></script>
+</body>
+</html>
